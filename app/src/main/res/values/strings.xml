@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Fts2</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_update">Update</string>
+     <string name="about">The application represents technical analysis data gathered from open instruments of investing.com. \n
+        GreyOG/Fusion Media/Investing.com will not accept any liability for loss or damage
+        as a result of reliance on the information contained within this tool including data, quotes,
+        charts and buy/sell signals.
+        Please be fully informed regarding the risks and costs associated with trading the financial markets,
+        it is one of the riskiest investment forms possible.
+        Currency trading on margin involves high risk, and is not suitable for all investors.
+        Before deciding to trade foreign exchange or any other financial instrument
+        you should carefully consider your investment objectives, level of experience, and risk appetite.</string>
+    <string name="about_title">About/Disclaimer</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="donate">It helps you? Donate!</string>
+    <string name="donate_url">https://www.paypal.me/greyog</string>
+
+    <!--<string name="banner_ad_unit_id">ca-app-pub-7481139450301121/3991868493</string>-->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>

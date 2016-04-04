@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="MAs Buy"
+            android:layout_column="0"
+            android:layout_span="7" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv1minMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv5minMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv15minMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv30minMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="3"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv1hourMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="4"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv5HourMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="5"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvDayMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="6"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvWeekMABuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:textSize="12sp"
+            android:layout_column="7"
+            android:layout_weight="1"
+            android:gravity="center">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="MAs Sell"
+            android:layout_column="0"
+            android:layout_span="7" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv1minMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="0"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv5minMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="1"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv15minMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="2"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv30minMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="3"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv1hourMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="4"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv5HourMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="5"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvDayMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="6"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvWeekMASell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="7"
+            android:gravity="center">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Indicators Buy"
+            android:layout_column="0"
+            android:layout_span="7" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv1minIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="0"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv5minIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="1"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv15minIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="2"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv30minIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="3"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv1hourIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="4"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv5HourIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="5"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvDayIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="6"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvWeekIndicatorBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="7"
+            android:gravity="center">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Indicators Sell"
+            android:layout_column="0"
+            android:layout_span="7" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv1minIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="0"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv5minIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="1"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv15minIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="2"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv30minIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="3"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv1hourIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="4"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tv5HourIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="5"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvDayIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="6"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:id="@+id/tvWeekIndicatorSell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text here"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_column="7"
+            android:gravity="center">
+        </TextView>
+    </LinearLayout>
+</LinearLayout>
