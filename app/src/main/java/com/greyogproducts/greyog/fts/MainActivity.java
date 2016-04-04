@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void reloadContent() {
-        if(!isUpdating){
+        if (!isUpdating) {
             new LoadThread().execute();
         }
     }

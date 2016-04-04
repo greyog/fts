@@ -41,6 +41,7 @@ public class MyOtherListAdapter extends SimpleExpandableListAdapter {
         for (TextView textView : textViews) {
             setTextColor(textView);
         }
+        ((TextView) mView.findViewById(R.id.tvPairName)).setTextColor(Color.BLUE);
         return mView;
     }
 

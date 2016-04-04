@@ -1,108 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tvPairName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:tag="name"
             android:text="Text here"
-            android:textSize="18sp"
             android:textColor="@color/blue"
-            >
-        </TextView>
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/tvPairPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:paddingStart="@dimen/activity_horizontal_margin"
             android:text="Text here"
-            android:textSize="16sp">
-        </TextView>
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tv1min"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp" />
+
         <TextView
             android:id="@+id/tv5min"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp"></TextView>
+
         <TextView
             android:id="@+id/tv15min"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp"></TextView>
+
         <TextView
             android:id="@+id/tv30min"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp"></TextView>
+
         <TextView
             android:id="@+id/tv1hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp"></TextView>
+
         <TextView
             android:id="@+id/tv5Hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp"></TextView>
+
         <TextView
             android:id="@+id/tvDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp"></TextView>
+
         <TextView
             android:id="@+id/tvWeek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Text here"
             android:layout_weight="1"
-            android:textSize="12sp">
-        </TextView>
+            android:text="Text here"
+            android:textSize="12sp"></TextView>
     </LinearLayout>
 </LinearLayout>

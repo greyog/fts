@@ -6,86 +6,93 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PlaceholderFragment"
-    >
+    tools:context="com.greyogproducts.greyog.fts.PlaceholderFragment">
 
     <LinearLayout
         android:id="@+id/llColumns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="1min"
-            android:layout_weight="1"
             android:id="@+id/tvColumn1m"
-            android:gravity="center" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="5min"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="1min"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/tvColumn5m"
-            android:gravity="center" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="15min"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="5min"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/tvColumn15m"
-            android:gravity="center" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="30min"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="15min"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/tvColumn30m"
-            android:gravity="center" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="1H"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="30min"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/tvColumn1H"
-            android:gravity="center" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="5H"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="1H"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/tvColumn5H"
-            android:gravity="center" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Day"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="5H"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/tvColumnD"
-            android:gravity="center" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Week"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="Day"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/tvColumnW"
-            android:gravity="center" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Week"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
     <ExpandableListView
+        android:id="@+id/mainList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/llColumns"
-        android:groupIndicator="@null"
-        android:id="@+id/mainList">
+        android:groupIndicator="@null">
 
     </ExpandableListView>
 
