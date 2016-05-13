@@ -36,6 +36,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -253,9 +254,13 @@ public class MainActivity extends AppCompatActivity {
         private String[] URLs = new String[]{URL1, URL2, URL3, URL4, URL5, URL6, URL7, URL8};
         private String[] defForex = new String[]{"1", "2", "3", "9", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "53", "55", "1691", "2186"};
         private String URLforex = "&forex=1,";
-        private String URLcommodities = "&commodities=8830,8836,8910,8831,8833,8849,8832";
-        private String URLindices = "&indices=172,175,%20167,27,166,179,40830";
-        private String URLstocks = "&stocks=282,7888,284,9251,941155,243,6408&tabs=1,2,3,4";
+        private String[] defCommodities = new String[]{"8830", "8836", "8910", "8831", "8833"};
+        private String URLcommodities = "&commodities=8830,";
+        private String[] defIndices = new String[]{"172", "175", "167", "27", "166"};
+        private String URLindices = "&indices=172,";
+        private String[] defStocks = new String[]{"282", "7888", "284", "9251", "941155"};
+        private String URLstocks = "&stocks=282,";
+        private String URLtabs = "&tabs=1,2,3,4";
         private ProgressDialog mProgressDialog;
         private ArrayList<Document> docs;
         private String msg = "";
@@ -277,16 +282,51 @@ public class MainActivity extends AppCompatActivity {
             mProgressDialog.setIndeterminate(false);
 
             Set<String> defForexStringSet = new HashSet<>();
-            for (String s : defForex) {
-                defForexStringSet.add(s);
-            }
+//            for (String s : defForex) {
+//                defForexStringSet.add(s);
+//            }
+            defForexStringSet.addAll(Arrays.asList(defForex));
             Set<String> forexStringSet = preferences.getStringSet("forexFilter", defForexStringSet);
             for (String s : forexStringSet) {
                 URLforex += s + ",";
             }
+            URLforex = removeTrailingComma(URLforex);
+
+            Set<String> defCommoditiesStringSet = new HashSet<>();
+//            for (String s : defCommodities) {
+//                defCommoditiesStringSet.add(s);
+//            }
+            defCommoditiesStringSet.addAll(Arrays.asList(defCommodities));
+            Set<String> commoditiesStringSet = preferences.getStringSet("commoditiesFilter", defCommoditiesStringSet);
+            for (String s : commoditiesStringSet) {
+                URLcommodities += s + ",";
+            }
+            URLcommodities = removeTrailingComma(URLcommodities);
+
+            Set<String> defIndicesStringSet = new HashSet<>();
+//            for (String s : defIndices) {
+//                defIndicesStringSet.add(s);
+//            }
+            defIndicesStringSet.addAll(Arrays.asList(defIndices));
+            Set<String> indicesStringSet = preferences.getStringSet("indicesFilter", defIndicesStringSet);
+            for (String s : indicesStringSet) {
+                URLindices += s + ",";
+            }
+            URLindices = removeTrailingComma(URLindices);
+
+            Set<String> defStocksStringSet = new HashSet<>();
+//            for (String s : defStocks) {
+//                defStocksStringSet.add(s);
+//            }
+            defStocksStringSet.addAll(Arrays.asList(defStocks));
+            Set<String> stocksStringSet = preferences.getStringSet("stocksFilter", defStocksStringSet);
+            for (String s : stocksStringSet) {
+                URLstocks += s + ",";
+            }
+            URLstocks = removeTrailingComma(URLstocks);
 
             for (int i = 0; i < URLs.length; i++) {
-                URLs[i] += URLforex + URLcommodities + URLindices + URLstocks;
+                URLs[i] += URLforex + URLcommodities + URLindices + URLstocks + URLtabs;
             }
             docs = new ArrayList<>();
 
@@ -294,6 +334,15 @@ public class MainActivity extends AppCompatActivity {
             // Show progressdialog
             mProgressDialog.show();
 
+        }
+
+        private String removeTrailingComma(String str) {
+            Log.d("Tag", "Main.removeTrailingComma at " + str);
+            String result = str;
+            if (str.endsWith(",")) {
+                result = str.substring(0, str.length() - 1);
+            }
+            return result;
         }
 
         @Override
