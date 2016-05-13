@@ -9,12 +9,12 @@
             android:key="address2"
             android:summary="@string/edittext2_summary"
             android:title="@string/edittext2_title"></EditTextPreference>
-        <ListPreference
-            android:entries="@array/entries"
-            android:entryValues="@array/entry_values"
-            android:key="list2"
-            android:summary="@string/list2_summary"
-            android:title="@string/list2_title"></ListPreference>
+        <!--<ListPreference-->
+        <!--android:entries="@array/entries"-->
+        <!--android:entryValues="@array/entry_values"-->
+        <!--android:key="list2"-->
+        <!--android:summary="@string/list2_summary"-->
+        <!--android:title="@string/list2_title"></ListPreference>-->
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/category2">
         <PreferenceScreen

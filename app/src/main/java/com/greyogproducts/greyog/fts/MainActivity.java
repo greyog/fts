@@ -38,7 +38,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private static SectionsPagerAdapter mSectionsPagerAdapter;
     private static Context ctx;
     public SharedPreferences preferences;
+    private SharedPreferences.OnSharedPreferenceChangeListener listener;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -128,6 +131,16 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                Log.d("Tag", "MainActivity.onSharedPreferenceChanged key : " + key);
+                if (key.equals("forexFilter")) {
+                    reloadContent();
+                }
+            }
+        };
+        preferences.registerOnSharedPreferenceChangeListener(listener);
     }
 
     @Override
@@ -238,10 +251,11 @@ public class MainActivity extends AppCompatActivity {
         private String URL7 = "http://tsw.forexprostools.com/index.php?timeframe=86400";
         private String URL8 = "http://tsw.forexprostools.com/index.php?timeframe=week";
         private String[] URLs = new String[]{URL1, URL2, URL3, URL4, URL5, URL6, URL7, URL8};
-        private String URLforex = "&forex=1,2,3,9,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,53,55,1691,2186";
+        private String[] defForex = new String[]{"1", "2", "3", "9", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "53", "55", "1691", "2186"};
+        private String URLforex = "&forex=1,";
         private String URLcommodities = "&commodities=8830,8836,8910,8831,8833,8849,8832";
         private String URLindices = "&indices=172,175,%20167,27,166,179,40830";
-        private String URLstocks = "&stocks=282,7888,284,9251,941155,243,6408&tabs=1,2,3,4&amp;forex=1,1691,2186,2,3,9,5,6,7,8&amp;commodities=8830,8836,8910,8831,8833,8849,8832&amp;indices=172,175,%20167,27,166,179,40830&amp;stocks=282,7888,284,9251,941155,243,6408&amp;tabs=1,2,3,4";
+        private String URLstocks = "&stocks=282,7888,284,9251,941155,243,6408&tabs=1,2,3,4";
         private ProgressDialog mProgressDialog;
         private ArrayList<Document> docs;
         private String msg = "";
@@ -261,6 +275,16 @@ public class MainActivity extends AppCompatActivity {
             // Set progressdialog message
             mProgressDialog.setMessage("Updating...");
             mProgressDialog.setIndeterminate(false);
+
+            Set<String> defForexStringSet = new HashSet<>();
+            for (String s : defForex) {
+                defForexStringSet.add(s);
+            }
+            Set<String> forexStringSet = preferences.getStringSet("forexFilter", defForexStringSet);
+            for (String s : forexStringSet) {
+                URLforex += s + ",";
+            }
+
             for (int i = 0; i < URLs.length; i++) {
                 URLs[i] += URLforex + URLcommodities + URLindices + URLstocks;
             }

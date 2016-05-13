@@ -46,9 +46,8 @@ public class PrefsActivity extends PreferenceActivity {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             Log.d("Tag", "MyPreferenceFragment.onSharedPreferenceChanged key : " + key);
-            if (key == "swTimerOn") {
+            if (key == "filterForex") {
 
-//                doCheckTimerIsOn(sharedPreferences);
             }
         }
     }

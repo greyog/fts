@@ -16,7 +16,7 @@
     <string name="prefs">Preferences</string>
     <string name="donate">It helps you? Donate!</string>
     <!--<string name="donate_url">https://www.paypal.me/greyog</string>-->
-    <string name="donate_url">https://money.yandex.ru/to/41001639417957</string>
+    <string name="donate_url">http://yasobe.ru/na/greyog</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-7481139450301121/3991868493</string>
     <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
@@ -27,15 +27,683 @@
     <string name="etTimerInterval_summary">Enter update interval in minutes</string>
     <string name="list1_title">List 1</string>
     <string name="list1_summary">Summary of List 1</string>
-    <string-array name="entries">
-        <item>one</item>
-        <item>two</item>
-        <item>three</item>
+    <string-array name="forex_filter_entries">
+        <item>EUR/USD</item>
+        <item>USD/JPY</item>
+        <item>GBP/USD</item>
+        <item>USD/CHF</item>
+        <item>USD/CAD</item>
+        <item>EUR/JPY</item>
+        <item>AUD/USD</item>
+        <item>NZD/USD</item>
+        <item>EUR/GBP</item>
+        <item>EUR/CHF</item>
+        <item>AUD/JPY</item>
+        <item>GBP/JPY</item>
+        <item>CHF/JPY</item>
+        <item>EUR/CAD</item>
+        <item>AUD/CAD</item>
+        <item>CAD/JPY</item>
+        <item>NZD/JPY</item>
+        <item>AUD/NZD</item>
+        <item>GBP/AUD</item>
+        <item>EUR/AUD</item>
+        <item>GBP/CHF</item>
+        <item>EUR/NZD</item>
+        <item>AUD/CHF</item>
+        <item>GBP/NZD</item>
+        <item>USD/SGD</item>
+        <item>USD/HKD</item>
+        <item>USD/DKK</item>
+        <item>GBP/CAD</item>
+        <item>EUR/RUB</item>
+        <item>USD/RUB</item>
     </string-array>
-    <string-array name="entry_values">
+    <string-array name="forex_filter_entry_values">
         <item>1</item>
-        <item>2</item>
         <item>3</item>
+        <item>2</item>
+        <item>4</item>
+        <item>7</item>
+        <item>9</item>
+        <item>5</item>
+        <item>8</item>
+        <item>6</item>
+        <item>10</item>
+        <item>49</item>
+        <item>11</item>
+        <item>13</item>
+        <item>16</item>
+        <item>47</item>
+        <item>51</item>
+        <item>58</item>
+        <item>50</item>
+        <item>53</item>
+        <item>15</item>
+        <item>12</item>
+        <item>52</item>
+        <item>48</item>
+        <item>55</item>
+        <item>42</item>
+        <item>155</item>
+        <item>43</item>
+        <item>54</item>
+        <item>1691</item>
+        <item>2186</item>
+    </string-array>
+    <string-array name="commodities_filter_entries">
+        <item>Gold</item>
+        <item>US Soybean Oil</item>
+        <item>US Soybeans</item>
+        <item>US Wheat</item>
+        <item>US Corn</item>
+        <item>US Soybean Meal</item>
+        <item>Heating Oil</item>
+        <item>Rough Rice</item>
+        <item>Aluminum</item>
+        <item>Gasoline RBOB</item>
+        <item>Zinc</item>
+        <item>Lumber</item>
+        <item>Oats</item>
+        <item>Lead</item>
+        <item>Nickel</item>
+        <item>Tin</item>
+        <item>Copper</item>
+        <item>Live Cattle</item>
+        <item>Lean Hogs</item>
+        <item>London Wheat</item>
+        <item>Copper</item>
+        <item>US Coffee C</item>
+        <item>Brent Oil</item>
+        <item>London Sugar</item>
+        <item>Silver</item>
+        <item>Crude Oil</item>
+        <item>US Cotton #2</item>
+        <item>London Cocoa</item>
+        <item>London Gas Oil</item>
+        <item>Natural Gas</item>
+        <item>US Sugar #11</item>
+        <item>Palladium</item>
+        <item>Orange Juice</item>
+        <item>US Cocoa</item>
+        <item>Platinum</item>
+        <item>London Robusta Coffee</item>
+        <item>Feeder Cattle</item>
+    </string-array>
+    <string-array name="commodities_filter_entry_values">
+        <item>8830</item>
+        <item>8915</item>
+        <item>8916</item>
+        <item>8917</item>
+        <item>8918</item>
+        <item>8919</item>
+        <item>8988</item>
+        <item>13916</item>
+        <item>49768</item>
+        <item>954867</item>
+        <item>956470</item>
+        <item>959198</item>
+        <item>959199</item>
+        <item>959207</item>
+        <item>959208</item>
+        <item>959209</item>
+        <item>959211</item>
+        <item>8914</item>
+        <item>8913</item>
+        <item>8912</item>
+        <item>8831</item>
+        <item>8832</item>
+        <item>8833</item>
+        <item>8834</item>
+        <item>8836</item>
+        <item>8849</item>
+        <item>8851</item>
+        <item>8860</item>
+        <item>8861</item>
+        <item>8862</item>
+        <item>8869</item>
+        <item>8883</item>
+        <item>8891</item>
+        <item>8894</item>
+        <item>8910</item>
+        <item>8911</item>
+        <item>961618</item>
+    </string-array>
+    <string-array name="indices_filter_entries">
+        <item>S&amp;P 500</item>
+        <item>FTSE 100</item>
+        <item>Euro Stoxx 50</item>
+        <item>DAX</item>
+        <item>SMI</item>
+        <item>FTSE MIB</item>
+        <item>AEX</item>
+        <item>CAC 40</item>
+        <item>PSI 20</item>
+        <item>IBEX 35</item>
+        <item>OMX Stockholm 30 CFD</item>
+        <item>SmallCap 2000</item>
+        <item>BEL 20</item>
+        <item>S&amp;P/ASX 200</item>
+        <item>Nikkei 225</item>
+        <item>Hang Seng</item>
+        <item>Tadawul</item>
+        <item>Athens General</item>
+    </string-array>
+    <string-array name="indices_filter_entry_values">
+        <item>166</item>
+        <item>27</item>
+        <item>175</item>
+        <item>172</item>
+        <item>176</item>
+        <item>177</item>
+        <item>168</item>
+        <item>167</item>
+        <item>14600</item>
+        <item>174</item>
+        <item>954864</item>
+        <item>170</item>
+        <item>14601</item>
+        <item>53094</item>
+        <item>40830</item>
+        <item>179</item>
+        <item>959210</item>
+        <item>44399</item>
+    </string-array>
+    <string-array name="stock_filter_entries">
+        <item>HSBC Holdings</item>
+        <item>Barclays</item>
+        <item>BP</item>
+        <item>Next</item>
+        <item>Lloyds Banking</item>
+        <item>EasyJet</item>
+        <item>RBS PLC</item>
+        <item>Vodafone Group PLC</item>
+        <item>AstraZeneca</item>
+        <item>3I Group</item>
+        <item>WPP</item>
+        <item>Tesco</item>
+        <item>Standard Life</item>
+        <item>Ladbrokes</item>
+        <item>Royal Dutch Shell</item>
+        <item>Rio Tinto</item>
+        <item>SABMiller</item>
+        <item>Burberry Group</item>
+        <item>GlaxoSmithKline</item>
+        <item>Barratt Developments</item>
+        <item>Aviva</item>
+        <item>London Stock Exchange</item>
+        <item>BAE Systems</item>
+        <item>Man Group</item>
+        <item>Rolls-Royce Holdings</item>
+        <item>Standard Chartered</item>
+        <item>J Sainsbury</item>
+        <item>BT Group</item>
+        <item>Sports Direct Int</item>
+        <item>Glencore</item>
+        <item>Lukoil</item>
+        <item>Wizz Air Holdings PLC</item>
+        <item>Jimmy Choo</item>
+        <item>Magnit</item>
+        <item>MegaFon</item>
+        <item>Samsung Electronics</item>
+        <item>Severstal</item>
+        <item>BASF SE</item>
+        <item>Bayer AG</item>
+        <item>Allianz</item>
+        <item>Adidas AG</item>
+        <item>Lufthansa AG</item>
+        <item>Siemens AG</item>
+        <item>Volkswagen AG ST</item>
+        <item>Deutsche Bank AG</item>
+        <item>Continental AG</item>
+        <item>Deutsche Post AG</item>
+        <item>Daimler AG</item>
+        <item>Henkel VZO</item>
+        <item>Commerzbank AG</item>
+        <item>Deutsche Boerse</item>
+        <item>BMW ST</item>
+        <item>Fresenius ST</item>
+        <item>Deutsche Telekom AG</item>
+        <item>Merck</item>
+        <item>Infineon AG</item>
+        <item>Linde AG</item>
+        <item>Metro AG ST</item>
+        <item>Muench. Rueckvers.</item>
+        <item>SAP AG</item>
+        <item>Thyssenkrupp AG</item>
+        <item>Tui AG</item>
+        <item>Wirecard AG</item>
+        <item>Lanxess AG</item>
+        <item>Beiersdorf AG</item>
+        <item>Fresenius SE</item>
+        <item>Freenet AG</item>
+        <item>Fraport AG</item>
+        <item>Wacker Chemie</item>
+        <item>QSC AG</item>
+        <item>Elringklinger AG</item>
+        <item>Krones AG</item>
+        <item>GEA Group AG</item>
+        <item>Prosiebensat 1 AG</item>
+        <item>Bilfinger SE</item>
+        <item>Software AG</item>
+        <item>Kloeckner SE</item>
+        <item>RWE AG ST</item>
+        <item>Nordex SE</item>
+        <item>Aixtron</item>
+        <item>STADA</item>
+        <item>K+S AG</item>
+        <item>MTU Aero</item>
+        <item>Heidelberger Druckmaschinen</item>
+        <item>Symrise AG</item>
+        <item>Pfeiffer</item>
+        <item>Heidelbergcement AG</item>
+        <item>Qiagen</item>
+        <item>United Internet AG</item>
+        <item>Morphosys AG</item>
+        <item>Hugo Boss AG</item>
+        <item>E.ON SE</item>
+        <item>Dialog</item>
+        <item>Fuchs Petrolub AG VZO</item>
+        <item>Suess Microtec</item>
+        <item>Volkswagen AG VZO</item>
+        <item>Axel Springer</item>
+        <item>Rocket Internet</item>
+        <item>Puma SE CFD</item>
+        <item>Gerresheimer</item>
+        <item>Credit Suisse</item>
+        <item>Adecco</item>
+        <item>Richemont SA</item>
+        <item>Julius Baer</item>
+        <item>ABB</item>
+        <item>Actelion</item>
+        <item>Zurich Insurance Group</item>
+        <item>Swatch I</item>
+        <item>Novartis</item>
+        <item>Nestle</item>
+        <item>Swiss Re</item>
+        <item>Roche</item>
+        <item>Lonza Group</item>
+        <item>Swisscom</item>
+        <item>Syngenta</item>
+        <item>SGS</item>
+        <item>Intesa Sanpaolo</item>
+        <item>Banca di Milano Scarl</item>
+        <item>Telecom Italia</item>
+        <item>Buzzi Unicem</item>
+        <item>Generali</item>
+        <item>Unicredit</item>
+        <item>Banca Monte dei Paschi di Siena</item>
+        <item>Enel</item>
+        <item>Fiat Chrysler Auto</item>
+        <item>ENI</item>
+        <item>Royal Dutch Shell A</item>
+        <item>ArcelorMittal</item>
+        <item>Gemalto</item>
+        <item>Philips</item>
+        <item>Heineken</item>
+        <item>Yara</item>
+        <item>Statoil</item>
+        <item>DnB</item>
+        <item>Telenor</item>
+        <item>Societe Generale</item>
+        <item>Orange</item>
+        <item>BNP Paribas</item>
+        <item>Vivendi</item>
+        <item>Vinci</item>
+        <item>Iliad</item>
+        <item>Airbus Group</item>
+        <item>AXA</item>
+        <item>Electricite de France</item>
+        <item>Air France -KLM</item>
+        <item>Alcatel Lucent</item>
+        <item>Cap Gemini</item>
+        <item>Louis Vuitton</item>
+        <item>L’Oreal</item>
+        <item>Peugeot</item>
+        <item>Saint Gobain</item>
+        <item>Carrefour</item>
+        <item>Credit Agricole</item>
+        <item>Michelin</item>
+        <item>Sanofi</item>
+        <item>Total</item>
+        <item>Faurecia</item>
+        <item>Hermes</item>
+        <item>Europcar Groupe</item>
+        <item>BBVA</item>
+        <item>Acciona</item>
+        <item>Enagas</item>
+        <item>Gamesa</item>
+        <item>Grifols</item>
+        <item>Red Ele.Corp</item>
+        <item>Inditex</item>
+        <item>Repsol</item>
+        <item>Iberdrola</item>
+        <item>Banco Popular</item>
+        <item>Indra A</item>
+        <item>Telefonica</item>
+        <item>Sacyr</item>
+        <item>B. Sabadell</item>
+        <item>Santander</item>
+        <item>Endesa</item>
+        <item>Amadeus</item>
+        <item>Abengoa B</item>
+        <item>Volvo</item>
+        <item>L M Ericsson</item>
+        <item>Telia</item>
+        <item>Handelsbank</item>
+        <item>Novo Nordisk B</item>
+        <item>Vestas Wind</item>
+        <item>Danske Bank</item>
+        <item>Novozymes B</item>
+        <item>BHP Billiton Ltd</item>
+        <item>Amcor</item>
+        <item>CSL</item>
+        <item>Macquarie Group</item>
+        <item>Commonwealth Bank Australia</item>
+        <item>Brambles</item>
+        <item>ANZ Banking Group</item>
+        <item>Newcrest Mining</item>
+        <item>Origin Energy</item>
+        <item>National Australia Bank</item>
+        <item>Qbe Insurance Group</item>
+        <item>Rio Tinto</item>
+        <item>Santos</item>
+        <item>Telstra Corporation.</item>
+        <item>Westpac Banking Corporation</item>
+        <item>Wesfarmers</item>
+        <item>Woolworths</item>
+        <item>Woodside Petroleum</item>
+        <item>Mitsubishi Motors Corp.</item>
+        <item>Mazda Motor Corp.</item>
+        <item>Toshiba Corp.</item>
+        <item>Sharp Corp.</item>
+        <item>Nippon Steel&amp;Sumitomo Metal Corp.</item>
+        <item>Sumitomo Mitsui Trust Holdings</item>
+        <item>Haseko Corp</item>
+        <item>Aiful Corp</item>
+        <item>Mizuho Financial</item>
+        <item>Nomura Holdings</item>
+        <item>Sabmiller plc</item>
+        <item>Anglo american plc</item>
+        <item>Bhp billiton (J)</item>
+        <item>Sasol Ltd</item>
+        <item>MTN Group</item>
+        <item>OTP Bank</item>
+        <item>MOL</item>
+        <item>Magyar Telekom</item>
+        <item>PKO Bank Polski</item>
+        <item>OrangePL</item>
+        <item>Bank Polska Kasa Opieki</item>
+        <item>KGHM Polska Miedz</item>
+        <item>ORLEN SA</item>
+        <item>PGE SA</item>
+        <item>PZU SA</item>
+        <item>Alpha Bank</item>
+        <item>Hellenic Petroleum</item>
+        <item>Motor Oil</item>
+        <item>Mytilineos Holdings</item>
+        <item>OPAP SA</item>
+        <item>Hellenic Telec</item>
+        <item>National Bank of Greece</item>
+        <item>Public Power</item>
+        <item>Coca Cola HBC</item>
+        <item>Grivalia</item>
+        <item>Jumbo</item>
+        <item>Titan Cement</item>
+        <item>Ellaktor</item>
+        <item>Vienna Insurance AG</item>
+        <item>Komercni Banka</item>
+        <item>O2 C.R</item>
+        <item>CEZ AS</item>
+        <item>Erste Group Bank</item>
+    </string-array>
+    <string-array name="stock_filter_entry_values">
+        <item>280</item>
+        <item>282</item>
+        <item>284</item>
+        <item>286</item>
+        <item>287</item>
+        <item>288</item>
+        <item>295</item>
+        <item>667</item>
+        <item>6565</item>
+        <item>6576</item>
+        <item>6578</item>
+        <item>6581</item>
+        <item>6583</item>
+        <item>6585</item>
+        <item>6593</item>
+        <item>6597</item>
+        <item>6606</item>
+        <item>6611</item>
+        <item>6612</item>
+        <item>6613</item>
+        <item>6615</item>
+        <item>6628</item>
+        <item>6632</item>
+        <item>6636</item>
+        <item>6645</item>
+        <item>6670</item>
+        <item>6706</item>
+        <item>6719</item>
+        <item>6772</item>
+        <item>13811</item>
+        <item>42599</item>
+        <item>945902</item>
+        <item>976843</item>
+        <item>976844</item>
+        <item>976845</item>
+        <item>976846</item>
+        <item>976847</item>
+        <item>345</item>
+        <item>346</item>
+        <item>347</item>
+        <item>348</item>
+        <item>349</item>
+        <item>350</item>
+        <item>351</item>
+        <item>352</item>
+        <item>353</item>
+        <item>354</item>
+        <item>355</item>
+        <item>357</item>
+        <item>358</item>
+        <item>359</item>
+        <item>652</item>
+        <item>653</item>
+        <item>656</item>
+        <item>658</item>
+        <item>659</item>
+        <item>660</item>
+        <item>661</item>
+        <item>662</item>
+        <item>663</item>
+        <item>664</item>
+        <item>666</item>
+        <item>6280</item>
+        <item>6281</item>
+        <item>6283</item>
+        <item>6284</item>
+        <item>6285</item>
+        <item>6289</item>
+        <item>6290</item>
+        <item>6292</item>
+        <item>6293</item>
+        <item>6295</item>
+        <item>6296</item>
+        <item>6297</item>
+        <item>6300</item>
+        <item>6302</item>
+        <item>6304</item>
+        <item>6306</item>
+        <item>6308</item>
+        <item>6313</item>
+        <item>6318</item>
+        <item>6320</item>
+        <item>6321</item>
+        <item>6324</item>
+        <item>6328</item>
+        <item>6331</item>
+        <item>6334</item>
+        <item>6336</item>
+        <item>6338</item>
+        <item>6343</item>
+        <item>6352</item>
+        <item>9251</item>
+        <item>13098</item>
+        <item>14148</item>
+        <item>14153</item>
+        <item>22402</item>
+        <item>39128</item>
+        <item>942334</item>
+        <item>958793</item>
+        <item>969241</item>
+        <item>316</item>
+        <item>317</item>
+        <item>318</item>
+        <item>319</item>
+        <item>320</item>
+        <item>323</item>
+        <item>329</item>
+        <item>330</item>
+        <item>332</item>
+        <item>334</item>
+        <item>335</item>
+        <item>337</item>
+        <item>338</item>
+        <item>339</item>
+        <item>7001</item>
+        <item>13818</item>
+        <item>22468</item>
+        <item>22630</item>
+        <item>22652</item>
+        <item>22860</item>
+        <item>22888</item>
+        <item>23257</item>
+        <item>23438</item>
+        <item>23603</item>
+        <item>23605</item>
+        <item>23625</item>
+        <item>22091</item>
+        <item>22744</item>
+        <item>23459</item>
+        <item>23477</item>
+        <item>25383</item>
+        <item>976848</item>
+        <item>976849</item>
+        <item>976850</item>
+        <item>976851</item>
+        <item>22391</item>
+        <item>22585</item>
+        <item>22986</item>
+        <item>23494</item>
+        <item>23566</item>
+        <item>23575</item>
+        <item>23602</item>
+        <item>23619</item>
+        <item>23623</item>
+        <item>25405</item>
+        <item>25408</item>
+        <item>25410</item>
+        <item>25413</item>
+        <item>25414</item>
+        <item>25416</item>
+        <item>25417</item>
+        <item>25418</item>
+        <item>25421</item>
+        <item>25423</item>
+        <item>25425</item>
+        <item>25426</item>
+        <item>25438</item>
+        <item>25453</item>
+        <item>958800</item>
+        <item>446</item>
+        <item>449</item>
+        <item>453</item>
+        <item>457</item>
+        <item>458</item>
+        <item>460</item>
+        <item>461</item>
+        <item>462</item>
+        <item>463</item>
+        <item>464</item>
+        <item>465</item>
+        <item>469</item>
+        <item>472</item>
+        <item>473</item>
+        <item>474</item>
+        <item>13816</item>
+        <item>14615</item>
+        <item>40331</item>
+        <item>976852</item>
+        <item>976853</item>
+        <item>976854</item>
+        <item>976855</item>
+        <item>976856</item>
+        <item>976857</item>
+        <item>976858</item>
+        <item>976859</item>
+        <item>617</item>
+        <item>621</item>
+        <item>623</item>
+        <item>624</item>
+        <item>625</item>
+        <item>631</item>
+        <item>636</item>
+        <item>7695</item>
+        <item>7710</item>
+        <item>7788</item>
+        <item>8592</item>
+        <item>8607</item>
+        <item>8656</item>
+        <item>8677</item>
+        <item>8706</item>
+        <item>8712</item>
+        <item>8720</item>
+        <item>8721</item>
+        <item>44147</item>
+        <item>44152</item>
+        <item>44211</item>
+        <item>44261</item>
+        <item>44280</item>
+        <item>44297</item>
+        <item>942531</item>
+        <item>946295</item>
+        <item>969281</item>
+        <item>969282</item>
+        <item>8729</item>
+        <item>8731</item>
+        <item>8990</item>
+        <item>41374</item>
+        <item>41382</item>
+        <item>8736</item>
+        <item>8755</item>
+        <item>8808</item>
+        <item>8737</item>
+        <item>8747</item>
+        <item>8759</item>
+        <item>8777</item>
+        <item>8785</item>
+        <item>13804</item>
+        <item>13805</item>
+        <item>13896</item>
+        <item>13905</item>
+        <item>13907</item>
+        <item>13910</item>
+        <item>13912</item>
+        <item>42646</item>
+        <item>42666</item>
+        <item>42669</item>
+        <item>958807</item>
+        <item>976860</item>
+        <item>976861</item>
+        <item>976862</item>
+        <item>976863</item>
+        <item>40905</item>
+        <item>50545</item>
+        <item>50553</item>
+        <item>958809</item>
+        <item>958810</item>
     </string-array>
     <string name="checkbox2_title">CheckBox 2</string>
     <string name="checkbox2_summary">Summary of CheckBox 2</string>
@@ -56,4 +724,7 @@
     <string name="header3_title">Header 3</string>
     <string name="header3_summary">Summary of Header 3</string>
     <string name="donate_summary">Donate to developer</string>
+    <string name="action_filter">Content filter</string>
+    <string name="forex_filter_summary">Choose Forex tab contents</string>
+    <string name="forex_filter_title">Forex tab</string>
 </resources>
