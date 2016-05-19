@@ -12,17 +12,41 @@
         android:numeric="decimal"
         android:summary="@string/etTimerInterval_summary"
         android:title="@string/etTimerInterval_title"></EditTextPreference>
+    <!--<PreferenceScreen-->
+    <!--android:summary="@string/donate_summary"-->
+    <!--android:title="@string/donate">-->
+    <!--<intent-->
+    <!--android:action="android.intent.action.VIEW"-->
+    <!--android:data="@string/donate_url"></intent>-->
+    <!--</PreferenceScreen>-->
     <PreferenceScreen
-        android:summary="@string/donate_summary"
-        android:title="@string/donate">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:data="@string/donate_url"></intent>
+        android:summary="@string/customize_tabs_sum"
+        android:title="@string/customize_tabs_title">
+        <MultiSelectListPreference
+            android:entries="@array/forex_filter_entries"
+            android:entryValues="@array/forex_filter_entry_values"
+            android:key="forexFilter"
+            android:summary="@string/forex_filter_summary"
+            android:title="@string/forex_filter_title"></MultiSelectListPreference>
+        <MultiSelectListPreference
+            android:entries="@array/commodities_filter_entries"
+            android:entryValues="@array/commodities_filter_entry_values"
+            android:key="commoditiesFilter"
+            android:summary="@string/commodities_filter_summary"
+            android:title="@string/commodities_filter_title"></MultiSelectListPreference>
+        <MultiSelectListPreference
+            android:entries="@array/indices_filter_entries"
+            android:entryValues="@array/indices_filter_entry_values"
+            android:key="indicesFilter"
+            android:summary="@string/indices_filter_summary"
+            android:title="@string/indices_filter_title"></MultiSelectListPreference>
+        <MultiSelectListPreference
+            android:entries="@array/stock_filter_entries"
+            android:entryValues="@array/stock_filter_entry_values"
+            android:key="stocksFilter"
+            android:summary="@string/stocks_filter_summary"
+            android:title="@string/stocks_filter_title"></MultiSelectListPreference>
+
     </PreferenceScreen>
-    <MultiSelectListPreference
-        android:entries="@array/forex_filter_entries"
-        android:entryValues="@array/forex_filter_entry_values"
-        android:key="forexFilter"
-        android:summary="@string/forex_filter_summary"
-        android:title="@string/forex_filter_title"></MultiSelectListPreference>
+
 </PreferenceScreen>

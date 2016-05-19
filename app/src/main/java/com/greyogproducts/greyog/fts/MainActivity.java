@@ -132,11 +132,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                 Log.d("Tag", "MainActivity.onSharedPreferenceChanged key : " + key);
-                if (key.equals("forexFilter")) {
+                if (key.equals("forexFilter") || key.equals("commoditiesFilter") || key.equals("indicesFilter") || key.equals("stocksFilter")) {
                     reloadContent();
                 }
             }
@@ -164,6 +165,9 @@ public class MainActivity extends AppCompatActivity {
         mTimer = new Timer();
         mMyTimerTask = new MyTimerTask();
         long updTime = Integer.parseInt(sharedPreferences.getString("edTimerInterval", "5"));
+        if (updTime < 1) {
+            updTime = 1;
+        }
         Log.d("Tag", "doCheckTimerIsOn update time : " + String.valueOf(updTime));
         timerInterval = updTime;
         updTime = updTime * 60000;
@@ -253,13 +257,13 @@ public class MainActivity extends AppCompatActivity {
         private String URL8 = "http://tsw.forexprostools.com/index.php?timeframe=week";
         private String[] URLs = new String[]{URL1, URL2, URL3, URL4, URL5, URL6, URL7, URL8};
         private String[] defForex = new String[]{"1", "2", "3", "9", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "53", "55", "1691", "2186"};
-        private String URLforex = "&forex=1,";
+        private String URLforex = "&forex=";
         private String[] defCommodities = new String[]{"8830", "8836", "8910", "8831", "8833"};
-        private String URLcommodities = "&commodities=8830,";
+        private String URLcommodities = "&commodities=";
         private String[] defIndices = new String[]{"172", "175", "167", "27", "166"};
-        private String URLindices = "&indices=172,";
+        private String URLindices = "&indices=";
         private String[] defStocks = new String[]{"282", "7888", "284", "9251", "941155"};
-        private String URLstocks = "&stocks=282,";
+        private String URLstocks = "&stocks=";
         private String URLtabs = "&tabs=1,2,3,4";
         private ProgressDialog mProgressDialog;
         private ArrayList<Document> docs;

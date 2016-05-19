@@ -14,7 +14,7 @@
     <string name="about_title">About/Disclaimer</string>
     <string name="disclaimer">Disclaimer</string>
     <string name="prefs">Preferences</string>
-    <string name="donate">It helps you? Donate!</string>
+    <string name="donate">Visit donation page</string>
     <!--<string name="donate_url">https://www.paypal.me/greyog</string>-->
     <string name="donate_url">http://yasobe.ru/na/greyog</string>
 
@@ -726,5 +726,13 @@
     <string name="donate_summary">Donate to developer</string>
     <string name="action_filter">Content filter</string>
     <string name="forex_filter_summary">Choose Forex tab contents</string>
-    <string name="forex_filter_title">Forex tab</string>
+    <string name="forex_filter_title">Forex tab content</string>
+    <string name="customize_tabs_sum">Choose what to you want to see</string>
+    <string name="customize_tabs_title">Customize tabs content</string>
+    <string name="commodities_filter_summary">Choose commodities to see</string>
+    <string name="commodities_filter_title">Commodities tab content</string>
+    <string name="indices_filter_summary">Choose indices to see</string>
+    <string name="indices_filter_title">Indices tab content</string>
+    <string name="stocks_filter_summary">Choose stocks to see</string>
+    <string name="stocks_filter_title">Stocks tab content</string>
 </resources>

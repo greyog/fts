@@ -13,7 +13,7 @@
         android:onClick="doActionDonate"
         android:orderInCategory="101"
         android:title="@string/donate"
-        android:visible="false"
+        android:visible="true"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_prefs"
