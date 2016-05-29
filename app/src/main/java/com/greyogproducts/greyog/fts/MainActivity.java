@@ -24,8 +24,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.greyogproducts.greyog.fts2.R;
 
 import org.jsoup.Jsoup;
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private static SectionsPagerAdapter mSectionsPagerAdapter;
     private static Context ctx;
     public SharedPreferences preferences;
+    InterstitialAd mInterstitialAd;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -108,6 +111,18 @@ public class MainActivity extends AppCompatActivity {
         // Start loading the ad in the background.
         mAdView.loadAd(adRequest);
 
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial_ad_unit_id));
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+
+        requestNewInterstitial();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -143,6 +158,14 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         preferences.registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
     }
 
     @Override
@@ -228,6 +251,51 @@ public class MainActivity extends AppCompatActivity {
 
     public void doActionPrefs(MenuItem item) {
         startActivity(new Intent(this, PrefsActivity.class));
+    }
+
+    public void doDefaultSort(MenuItem item) {
+        onHeaderClick(null);
+    }
+
+    public void onHeaderClick(View view) {
+        int column = 0;
+        if (view != null) {
+            switch (view.getId()) {
+                case R.id.tvColumn1m:
+                    column = 1;
+                    break;
+                case R.id.tvColumn5m:
+                    column = 2;
+                    break;
+                case R.id.tvColumn15m:
+                    column = 3;
+                    break;
+                case R.id.tvColumn30m:
+                    column = 4;
+                    break;
+                case R.id.tvColumn1H:
+                    column = 5;
+                    break;
+                case R.id.tvColumn5H:
+                    column = 6;
+                    break;
+                case R.id.tvColumnD:
+                    column = 7;
+                    break;
+                case R.id.tvColumnW:
+                    column = 8;
+                    break;
+            }
+        }
+        Log.d("Tag", "onHeaderClick: column = " + column);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("sort", column);
+        editor.commit();
+        mSectionsPagerAdapter.onListHeaderClick(column);
+    }
+
+    public interface onListHeaderClickListener {
+        void onListHeaderClick(int column);
     }
 
     class MyTimerTask extends TimerTask {
@@ -338,6 +406,10 @@ public class MainActivity extends AppCompatActivity {
             // Show progressdialog
             mProgressDialog.show();
 
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
+
         }
 
         private String removeTrailingComma(String str) {
@@ -397,6 +469,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void fillGroupData() {
+            Log.d("Tag", "fillGroupData start");
             Cursor cGroupData = db.getGroupData();
             ArrayList<Map<String, String>> mGroupData;
             ArrayList<ArrayList<Map<String, String>>> mChildData;
@@ -425,9 +498,11 @@ public class MainActivity extends AppCompatActivity {
 
             } else
                 Log.d("Tag", "Cursor is null");
+            Log.d("Tag", "fillGroupData end");
         }
 
         private void fillChildData(String groupID, ArrayList<ArrayList<Map<String, String>>> childData) {
+//            Log.d("Tag", "fillChildData start");
             Cursor cChildData = db.getChildData(groupID);
 //        Log.d("Tag", "fillChildData entered with "+groupID);
             ArrayList<Map<String, String>> childDataItem;
@@ -452,9 +527,11 @@ public class MainActivity extends AppCompatActivity {
 
             } else
                 Log.d("Tag", "fillChildData Child Cursor is null. Group: " + groupID);
+//            Log.d("Tag", "fillChildData end");
         }
 
         private void fillDB() {
+            Log.d("Tag", "fillDB start");
             String summaryName, technicalSummary, maBuy, maSell, tiBuy, tiSell, summaryLast, timeFrame, updateTime;
             db.getDB().execSQL("delete from " + DB.getDefTable());
             for (Document doc : docs) {
@@ -579,6 +656,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            Log.d("Tag", "fillDB end");
         }
     }
 

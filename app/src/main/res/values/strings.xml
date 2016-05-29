@@ -14,12 +14,13 @@
     <string name="about_title">About/Disclaimer</string>
     <string name="disclaimer">Disclaimer</string>
     <string name="prefs">Preferences</string>
-    <string name="donate">Visit donation page</string>
-    <!--<string name="donate_url">https://www.paypal.me/greyog</string>-->
-    <string name="donate_url">http://yasobe.ru/na/greyog</string>
+    <string name="donate">Make donation</string>
+    <string name="donate_url">https://www.paypal.me/greyog</string>
+    <!--<string name="donate_url">http://yasobe.ru/na/greyog</string>-->
 
     <string name="banner_ad_unit_id">ca-app-pub-7481139450301121/3991868493</string>
     <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+    <string name="interstitial_ad_unit_id">ca-app-pub-7481139450301121/4167406890</string>
 
     <string name="checkboxTimerOn">Update automatically</string>
     <string name="checkbox1_summary">Summary of CheckBox 1</string>
@@ -735,4 +736,31 @@
     <string name="indices_filter_title">Indices tab content</string>
     <string name="stocks_filter_summary">Choose stocks to see</string>
     <string name="stocks_filter_title">Stocks tab content</string>
+    <string name="sort_items">Sort content</string>
+    <string name="sort1">Primary</string>
+    <string name="defaultSorting">Sort items by name</string>
+    <string-array name="sort_entries">
+        <item>Name</item>
+        <item>Price</item>
+        <item>1 min</item>
+        <item>5 mins</item>
+        <item>15 mins</item>
+        <item>30 mins</item>
+        <item>1 Hour</item>
+        <item>5 Hours</item>
+        <item>Day</item>
+        <item>Week</item>
+    </string-array>
+    <string-array name="sort_entry_values">
+        <item>groupName</item>
+        <item>price</item>
+        <item>one_min</item>
+        <item>five_min</item>
+        <item>onefive_min</item>
+        <item>thirty_min</item>
+        <item>one_hour</item>
+        <item>five_hour</item>
+        <item>Day</item>
+        <item>Week</item>
+    </string-array>
 </resources>

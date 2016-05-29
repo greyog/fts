@@ -48,5 +48,16 @@
             android:title="@string/stocks_filter_title"></MultiSelectListPreference>
 
     </PreferenceScreen>
+    <!--<PreferenceScreen-->
+    <!--android:title="@string/sort_items"-->
+    <!--&gt;-->
+    <!--<ListPreference-->
+    <!--android:entries="@array/sort_entries"-->
+    <!--android:entryValues="@array/sort_entry_values"-->
+    <!--android:key="sort1"-->
+    <!--android:defaultValue="groupName"-->
+    <!--android:title="@string/sort1">-->
+    <!--</ListPreference>-->
+    <!--</PreferenceScreen>-->
 
 </PreferenceScreen>

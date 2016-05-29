@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ import java.util.Map;
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class SectionsPagerAdapter extends FragmentPagerAdapter implements MainActivity.onListHeaderClickListener {
 
     final int pageCount = 4;
     private Map<Integer, String> mFragmentTags;
@@ -34,6 +35,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             ((PlaceholderFragment) fragment).resetListAdapter();
 //            Log.d("Tag", "notifyDataSetChanged " + fragment.getArguments().getInt("section_number"));
         }
+
     }
 
     @Override
@@ -82,5 +84,16 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             return null;
         }
         return mFragmentManager.findFragmentByTag(tag);
+    }
+
+    @Override
+    public void onListHeaderClick(int column) {
+        Toast.makeText(mContext, "Sort by column " + column, Toast.LENGTH_SHORT).show();
+        for (Fragment fragment : mFragmentManager.getFragments()) {
+            if (fragment.isVisible()) {
+                ((PlaceholderFragment) fragment).setSortColumn(column);
+//            Log.d("Tag", "onListHeaderClick " + fragment.getArguments().getInt("section_number"));
+            }
+        }
     }
 }

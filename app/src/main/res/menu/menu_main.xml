@@ -16,6 +16,12 @@
         android:visible="true"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_sort"
+        android:onClick="doDefaultSort"
+        android:orderInCategory="40"
+        android:title="@string/defaultSorting"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_prefs"
         android:onClick="doActionPrefs"
         android:orderInCategory="50"
