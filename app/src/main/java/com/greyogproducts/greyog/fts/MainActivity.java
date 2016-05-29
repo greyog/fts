@@ -43,6 +43,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -288,9 +289,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         Log.d("Tag", "onHeaderClick: column = " + column);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("sort", column);
-        editor.commit();
         mSectionsPagerAdapter.onListHeaderClick(column);
     }
 
@@ -406,7 +404,8 @@ public class MainActivity extends AppCompatActivity {
             // Show progressdialog
             mProgressDialog.show();
 
-            if (mInterstitialAd.isLoaded()) {
+            Random random = new Random();
+            if (mInterstitialAd.isLoaded() && (random.nextInt(100) < 20)) {
                 mInterstitialAd.show();
             }
 

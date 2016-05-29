@@ -2,7 +2,6 @@ package com.greyogproducts.greyog.fts;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,7 +27,6 @@ public class PlaceholderFragment extends Fragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String ARG_OLD_SORT_COLUMN = "old_column";
-    private MyOtherListAdapter sctAdapter;
     private View rootView;
 
 
@@ -49,7 +47,6 @@ public class PlaceholderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
         resetListAdapter();
         return rootView;
     }
@@ -90,19 +87,11 @@ public class PlaceholderFragment extends Fragment {
                 return strL.compareTo(strR);
             }
         };
-        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        final int mSortColumn = mPreferences.getInt("sort", 0);
-        int oldSortColumn = mPreferences.getInt("oldSort_" + sectionNumber, -1);
-        int order = mPreferences.getInt("oldSortOrder_" + sectionNumber, 1);
+        SharedPreferences mPreferences = getActivity().getPreferences(0);
+        final int mSortColumn = mPreferences.getInt("sort_" + sectionNumber, 0);
         Log.d("Tag", "resetListAdapter: mSortColumn = " + mSortColumn);
-        Log.d("Tag", "resetListAdapter: oldSortColumn = " + oldSortColumn);
-        if (mSortColumn == oldSortColumn) order = (-1) * order;
-        Log.d("Tag", "resetListAdapter: order = " + order);
-        SharedPreferences.Editor editor = mPreferences.edit();
-        editor.putInt("oldSortOrder_" + sectionNumber, order);
-        editor.putInt("oldSort_" + sectionNumber, mSortColumn);
-        editor.commit();
-        final int finalOrder = order;
+        final int finalOrder = mPreferences.getInt("sortOrder_" + sectionNumber, 1);
+        Log.d("Tag", "resetListAdapter: order = " + finalOrder);
         Comparator<Map<String, String>> comparator = new Comparator<Map<String, String>>() {
             @Override
             public int compare(Map<String, String> lhs, Map<String, String> rhs) {
@@ -245,14 +234,14 @@ public class PlaceholderFragment extends Fragment {
 //                Log.d("Tag",s);
 //            }
 //        }
-        sctAdapter = new MyOtherListAdapter(getContext(), data,
+        MyOtherListAdapter sctAdapter = new MyOtherListAdapter(getContext(), data,
                 R.layout.group_list_item,                     // Your row layout for a group
                 groupFrom,                      // Field(s) to use from group cursor
                 groupTo,                 // Widget ids to put group data into
                 childData,
                 R.layout.child_list_item,                 // Your row layout for a child
                 childFrom,  // Field(s) to use from child cursors
-                childTo);          // Widget ids to put child data into
+                childTo);
 
         elvMain.setAdapter(sctAdapter);
 //        Log.d("Tag", "finish");
@@ -282,7 +271,21 @@ public class PlaceholderFragment extends Fragment {
 
     public void setSortColumn(int sortColumn) {
         Log.d("Tag", "setSortColumn: " + sortColumn);
-//        this.mSortColumn = sortColumn;
+        SharedPreferences mPreferences = getActivity().getPreferences(0);
+        int sectionNumber = this.getArguments().getInt(ARG_SECTION_NUMBER);
+        int oldSortColumn = mPreferences.getInt("sort_" + sectionNumber, 0);
+        int order = mPreferences.getInt("sortOrder_" + sectionNumber, 1);
+        Log.d("Tag", "setSortColumn: sortColumn = " + sortColumn);
+        Log.d("Tag", "setSortColumn: oldSortColumn = " + oldSortColumn);
+        if (sortColumn == oldSortColumn) {
+            order = (-1) * order;
+        } else {
+            order = 1;
+        }
+        Log.d("Tag", "setSortColumn: order = " + order);
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putInt("sortOrder_" + sectionNumber, order).commit();
+        editor.putInt("sort_" + sectionNumber, sortColumn).commit();
         resetListAdapter();
     }
 }
