@@ -23,7 +23,7 @@
             android:onClick="onHeaderClick"
             android:tag="1"
             android:text="1min"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/tvColumn5m"
@@ -34,7 +34,7 @@
             android:onClick="onHeaderClick"
             android:tag="2"
             android:text="5min"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/tvColumn15m"
@@ -45,7 +45,7 @@
             android:onClick="onHeaderClick"
             android:tag="3"
             android:text="15min"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/tvColumn30m"
@@ -56,7 +56,7 @@
             android:onClick="onHeaderClick"
             android:tag="4"
             android:text="30min"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/tvColumn1H"
@@ -67,7 +67,7 @@
             android:onClick="onHeaderClick"
             android:tag="5"
             android:text="1H"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/tvColumn5H"
@@ -78,7 +78,7 @@
             android:onClick="onHeaderClick"
             android:tag="6"
             android:text="5H"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/tvColumnD"
@@ -89,7 +89,7 @@
             android:onClick="onHeaderClick"
             android:tag="7"
             android:text="Day"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/tvColumnW"
@@ -100,7 +100,7 @@
             android:onClick="onHeaderClick"
             android:tag="8"
             android:text="Week"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
     <ExpandableListView
