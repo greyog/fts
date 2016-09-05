@@ -126,8 +126,12 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        reloadContent();
+        try {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        } finally {
+            reloadContent();
+        }
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -313,6 +317,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class LoadThread extends AsyncTask<Void, Void, Void> {
+        ArrayList<String> urlsList;
+        Set<String> forexStringSet;
+        Set<String> commoditiesStringSet;
+        Set<String> indicesStringSet;
+        Set<String> stocksStringSet;
         private String URL1 = "http://tsw.forexprostools.com/index.php?timeframe=60";
         private String URL2 = "http://tsw.forexprostools.com/index.php?timeframe=300";
         private String URL3 = "http://tsw.forexprostools.com/index.php?timeframe=900";
@@ -348,26 +357,45 @@ public class MainActivity extends AppCompatActivity {
             // Set progressdialog title
             mProgressDialog.setTitle("Technical Summary");
             // Set progressdialog message
-            mProgressDialog.setMessage("Updating...");
+            mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);
 
             Set<String> defForexStringSet = new HashSet<>();
-//            for (String s : defForex) {
-//                defForexStringSet.add(s);
-//            }
             defForexStringSet.addAll(Arrays.asList(defForex));
-            Set<String> forexStringSet = preferences.getStringSet("forexFilter", defForexStringSet);
-            for (String s : forexStringSet) {
-                URLforex += s + ",";
+            forexStringSet = preferences.getStringSet("forexFilter", defForexStringSet);
+//            Log.d("Tag","onPreExec: forexStringSet.count = " + forexStringSet.size());
+            ArrayList<String> fxStrList = new ArrayList<>(forexStringSet);
+            int k = 0;
+            ArrayList<String> fxUrlList = new ArrayList<>();
+            String strItem = "";
+            while (fxStrList.size() > 0) {
+                String s = fxStrList.get(0);
+//                URLforex += s + ",";
+                strItem += s + ",";
+                k++;
+                if (k == 7) {
+                    strItem = removeTrailingComma(strItem);
+                    fxUrlList.add(strItem);
+                    strItem = "";
+                    k = 0;
+                }
+                fxStrList.remove(0);
             }
-            URLforex = removeTrailingComma(URLforex);
+            strItem = removeTrailingComma(strItem);
+            fxUrlList.add(strItem);
+//            for (String s : forexStringSet) {
+//                URLforex += s + ",";
+//                forexStringSet.remove(s);
+//                k++;
+//            }
+//            URLforex = removeTrailingComma(URLforex);
 
             Set<String> defCommoditiesStringSet = new HashSet<>();
 //            for (String s : defCommodities) {
 //                defCommoditiesStringSet.add(s);
 //            }
             defCommoditiesStringSet.addAll(Arrays.asList(defCommodities));
-            Set<String> commoditiesStringSet = preferences.getStringSet("commoditiesFilter", defCommoditiesStringSet);
+            commoditiesStringSet = preferences.getStringSet("commoditiesFilter", defCommoditiesStringSet);
             for (String s : commoditiesStringSet) {
                 URLcommodities += s + ",";
             }
@@ -378,7 +406,7 @@ public class MainActivity extends AppCompatActivity {
 //                defIndicesStringSet.add(s);
 //            }
             defIndicesStringSet.addAll(Arrays.asList(defIndices));
-            Set<String> indicesStringSet = preferences.getStringSet("indicesFilter", defIndicesStringSet);
+            indicesStringSet = preferences.getStringSet("indicesFilter", defIndicesStringSet);
             for (String s : indicesStringSet) {
                 URLindices += s + ",";
             }
@@ -389,15 +417,21 @@ public class MainActivity extends AppCompatActivity {
 //                defStocksStringSet.add(s);
 //            }
             defStocksStringSet.addAll(Arrays.asList(defStocks));
-            Set<String> stocksStringSet = preferences.getStringSet("stocksFilter", defStocksStringSet);
+            stocksStringSet = preferences.getStringSet("stocksFilter", defStocksStringSet);
             for (String s : stocksStringSet) {
                 URLstocks += s + ",";
             }
             URLstocks = removeTrailingComma(URLstocks);
 
-            for (int i = 0; i < URLs.length; i++) {
-                URLs[i] += URLforex + URLcommodities + URLindices + URLstocks + URLtabs;
+            urlsList = new ArrayList<>();
+            for (int j = 0; j < fxUrlList.size(); j++) {
+                String urlFx = URLforex + fxUrlList.get(j);
+                for (int i = 0; i < URLs.length; i++) {
+                    String temp = URLs[i] + urlFx + URLcommodities + URLindices + URLstocks + URLtabs;
+                    urlsList.add(temp);
+                }
             }
+            Log.d("Tag", "onPreExec: urlsList = " + urlsList.toString());
             docs = new ArrayList<>();
 
             db.open();
@@ -412,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private String removeTrailingComma(String str) {
-            Log.d("Tag", "Main.removeTrailingComma at " + str);
+//            Log.d("Tag", "Main.removeTrailingComma at " + str);
             String result = str;
             if (str.endsWith(",")) {
                 result = str.substring(0, str.length() - 1);
@@ -422,11 +456,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... params) {
-            for (int i = 0; i < URLs.length; i++) {
-                String url = URLs[i];
+            for (int i = 0; i < urlsList.size(); i++) {
+                String url = urlsList.get(i);
                 try {
                     Log.d("Tag", "Trying to connect " + url);
-                    Document doc = Jsoup.connect(url).get();
+                    Document doc = Jsoup.connect(url)
+                            .timeout(0) // Relax the server by according it infinite time...
+                            .maxBodySize(0) // We don't know the size of the server response...
+                            .header("Accept-Encoding", "gzip") //
+                            .userAgent("Dalvik") //
+                            .get();
                     docs.add(doc);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -438,9 +477,16 @@ public class MainActivity extends AppCompatActivity {
                     msg += String.valueOf(i) + " ";
                 }
             }
+            publishProgress();
             fillDB();
             fillGroupData();
             return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+            mProgressDialog.setMessage("Updating...");
         }
 
         @Override
@@ -474,16 +520,16 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<ArrayList<Map<String, String>>> mChildData;
             if (cGroupData != null) {
                 if (cGroupData.moveToFirst()) {
-                    String str;
+//                    String str;
                     mGroupData = new ArrayList<>();
                     mChildData = new ArrayList<>();
                     do {
-                        str = "fillGroupData ";
+//                        str = "fillGroupData ";
                         Map<String, String> m = new HashMap<>();
                         for (String cn : cGroupData.getColumnNames()) {
                             String me = cGroupData.getString(cGroupData.getColumnIndex(cn));
                             m.put(cn, me);
-                            str = str.concat(cn + ":" + me + "; ");
+//                            str = str.concat(cn + ":" + me + "; ");
                         }
 //                    Log.d("Tag", str);
                         mGroupData.add(m);
@@ -507,15 +553,15 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Map<String, String>> childDataItem;
             if (cChildData != null) {
                 if (cChildData.moveToFirst()) {
-                    String str;
+//                    String str;
                     do {
-                        str = groupID + ": ";
+//                        str = groupID + ": ";
                         childDataItem = new ArrayList<>();
                         Map<String, String> m = new HashMap<>();
                         for (String cn : cChildData.getColumnNames()) {
                             String me = cChildData.getString(cChildData.getColumnIndex(cn));
                             m.put(cn, me);
-                            str = str.concat(cn + ":" + me + "; ");
+//                            str = str.concat(cn + ":" + me + "; ");
                         }
 //                    Log.d("Tag", "fillChildData "+str);
                         childDataItem.add(m);
@@ -531,6 +577,12 @@ public class MainActivity extends AppCompatActivity {
 
         private void fillDB() {
             Log.d("Tag", "fillDB start");
+            HashSet<String> pairsSet = new HashSet<>();
+            pairsSet.addAll(forexStringSet);
+            pairsSet.addAll(commoditiesStringSet);
+            pairsSet.addAll(indicesStringSet);
+            pairsSet.addAll(stocksStringSet);
+            Log.d("Tag", "fillDB: pairsSet.count = " + pairsSet.size());
             String summaryName, technicalSummary, maBuy, maSell, tiBuy, tiSell, summaryLast, timeFrame, updateTime;
             db.getDB().execSQL("delete from " + DB.getDefTable());
             for (Document doc : docs) {
@@ -596,7 +648,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                     for (Element mainSumDiv : doc.getElementsByAttributeValueContaining("id", "mainSummaryDiv_")) {
-                        String summaryId = mainSumDiv.id().substring(mainSumDiv.id().indexOf("_"));
+                        String summaryId = mainSumDiv.id().substring(mainSumDiv.id().indexOf("_") + 1);
                         summaryName = mainSumDiv.getElementById("summaryName").text();
                         summaryLast = mainSumDiv.getElementById("summaryLast").text();
                         technicalSummary = mainSumDiv.getElementById("technicalSummary").text();
@@ -614,13 +666,17 @@ public class MainActivity extends AppCompatActivity {
                         cv.put(attrMaBuy, maBuy);
                         cv.put(attrMaSell, maSell);
                         //try to update field
-                        int updCount = db.getDB().update(DB.getDefTable(), cv, Constants.ATTR_GROUP_ID + "=?", new String[]{summaryId});
+                        if (pairsSet.contains(summaryId)) {
+                            int updCount = 0;
+                            updCount = db.getDB().update(DB.getDefTable(), cv, Constants.ATTR_GROUP_ID + "=?", new String[]{summaryId});
+
 //                    Log.d("Tag", "Updated " + String.valueOf(updCount));
-                        if (updCount == 0) {
-                            // заполним таблицу
-                            cv.put(Constants.ATTR_GROUP_ID, summaryId);
-                            long id = db.getDB().insert(DB.getDefTable(), null, cv);
+                            if (updCount == 0) {
+                                // заполним таблицу
+                                cv.put(Constants.ATTR_GROUP_ID, summaryId);
+                                long id = db.getDB().insert(DB.getDefTable(), null, cv);
 //                        Log.d("Tag","Inserted "+String.valueOf(id));
+                            }
                         }
                     }
                 }
@@ -634,20 +690,20 @@ public class MainActivity extends AppCompatActivity {
                     Elements tabElements = doc.getElementsByAttributeValue("id", "QBS_" + String.valueOf(i) + "_inner");
                     Element tabElement = tabElements.first();
                     if (tabElement != null) {
-                        String log = "Tab: " + String.valueOf(i) + ". Groups: ";
+//                        String log = "Tab: " + String.valueOf(i) + ". Groups: ";
 //                    Log.d("Tag",log);
-                        String log2 = "all: ";
+//                        String log2 = "all: ";
                         for (Element element : tabElement.getElementsByAttribute("title")) {
                             String stringName = element.text();
                             String stringId = element.parent().id();
 //                        Log.d("Tag","fill Tabs "+stringName+" : "+stringId);
                             ContentValues cv = new ContentValues();
                             cv.put(Constants.ATTR_TAB_NUM, String.valueOf(i - 1));
-                            int updCount = db.getDB().update(DB.getDefTable(), cv, Constants.ATTR_GROUP_ID + "= \'_" + stringId + "\'", null);
-                            if (updCount > 0) {
-                                log += stringName + ", ";
-                            }
-                            log2 += stringName + ", ";
+                            int updCount = db.getDB().update(DB.getDefTable(), cv, Constants.ATTR_GROUP_ID + "= \'" + stringId + "\'", null);
+//                            if (updCount > 0) {
+//                                log += stringName + ", ";
+//                            }
+//                            log2 += stringName + ", ";
                         }
 //                    Log.d("Tag",log);
 //                    Log.d("Tag",log2);

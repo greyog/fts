@@ -47,23 +47,24 @@ public class MyOtherListAdapter extends SimpleExpandableListAdapter {
 
     private Void setTextColor(TextView tv) {
         if (tv != null) {
-            if (tv.getText().equals(Constants.SELL)) {
+            CharSequence text = tv.getText();
+            if (text.equals(Constants.SELL)) {
                 tv.setTextColor(Color.WHITE);
                 tv.setBackgroundColor(Color.RED);
             }
-            if (tv.getText().equals(Constants.STRONG_SELL)) {
+            if (text.equals(Constants.STRONG_SELL)) {
                 tv.setTextColor(Color.WHITE);
                 tv.setBackgroundColor(Color.RED);
             }
-            if (tv.getText().equals(Constants.BUY)) {
+            if (text.equals(Constants.BUY)) {
                 tv.setTextColor(Color.WHITE);
                 tv.setBackgroundColor(Color.GREEN);
             }
-            if (tv.getText().equals(Constants.STRONG_BUY)) {
+            if (text.equals(Constants.STRONG_BUY)) {
                 tv.setTextColor(Color.WHITE);
                 tv.setBackgroundColor(Color.GREEN);
             }
-            if (tv.getText().equals(Constants.NEUTRAL)) {
+            if (text.equals(Constants.NEUTRAL)) {
                 tv.setTextColor(Color.BLACK);
                 tv.setBackgroundColor(tv.getDrawingCacheBackgroundColor());
             }

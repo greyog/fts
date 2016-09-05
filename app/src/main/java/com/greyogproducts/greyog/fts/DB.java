@@ -12,9 +12,8 @@ import android.util.Log;
 
 public class DB {
 
-    private static final String DB_NAME = "myDB";
+
     private static final String DEF_TABLE = "myTable";
-    private static final int DB_VERSION = 1;
 
     private final Context mCtx;
 
@@ -35,7 +34,7 @@ public class DB {
 
     // открываем подключение
     public void open() {
-        mDBHelper = new DBHelper(mCtx, DB_NAME, null, DB_VERSION);
+        mDBHelper = DBHelper.getInstance(mCtx);
         mDB = mDBHelper.getWritableDatabase();
     }
 
@@ -110,72 +109,89 @@ public class DB {
         return mDB.query(DEF_TABLE, columns, Constants.ATTR_GROUP_ID + " = \'"
                 + groupID + "\'", null, null, null, null);
     }
+}
 
-    private class DBHelper extends SQLiteOpenHelper {
+class DBHelper extends SQLiteOpenHelper {
 
-        public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-            super(context, name, factory, version);
+    private static final String DB_NAME = "myDB";
+    private static final int DB_VERSION = 1;
+    private static final String DEF_TABLE = "myTable";
+
+    private static DBHelper sInstance;
+
+    public DBHelper(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
+    }
+
+    public static synchronized DBHelper getInstance(Context context) {
+
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        // See this article for more information: http://bit.ly/6LRzfx
+        if (sInstance == null) {
+            sInstance = new DBHelper(context.getApplicationContext());
         }
+        return sInstance;
+    }
 
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            // создаем таблицу с полями
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        // создаем таблицу с полями
 //            Log.d("Tag","Deleting table...");
 //            db.execSQL("drop table if exists " + DEF_TABLE);
-            Log.d("Tag", "Creating table...");
-            db.execSQL("create table " + DEF_TABLE + " ("
-                    + "id integer primary key autoincrement,"
-                    + Constants.ATTR_GROUP_NAME + " text default '',"
-                    + Constants.ATTR_GROUP_ID + " text default '',"
-                    + Constants.ATTR_PRICE + " text default '',"
-                    + Constants.ATTR_TAB_NUM + " text default '0',"
-                    + Constants.ATTR_ADVICE_1min + " text default '',"
-                    + Constants.ATTR_ADVICE_5min + " text default '',"
-                    + Constants.ATTR_ADVICE_15min + " text default '',"
-                    + Constants.ATTR_ADVICE_30min + " text default '',"
-                    + Constants.ATTR_ADVICE_1Hour + " text default '',"
-                    + Constants.ATTR_ADVICE_5Hour + " text default '',"
-                    + Constants.ATTR_ADVICE_Day + " text default '',"
-                    + Constants.ATTR_ADVICE_Week + " text default '',"
-                    + Constants.ATTR_ADVICE_1min_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_5min_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_15min_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_30min_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_1Hour_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_5Hour_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_Day_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_Week_MABuy + " text default '',"
-                    + Constants.ATTR_ADVICE_1min_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_5min_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_15min_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_30min_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_1Hour_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_5Hour_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_Day_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_Week_MASell + " text default '',"
-                    + Constants.ATTR_ADVICE_1min_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_5min_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_15min_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_30min_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_1Hour_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_5Hour_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_Day_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_Week_IndBuy + " text default '',"
-                    + Constants.ATTR_ADVICE_1min_IndSell + " text default '',"
-                    + Constants.ATTR_ADVICE_5min_IndSell + " text default '',"
-                    + Constants.ATTR_ADVICE_15min_IndSell + " text default '',"
-                    + Constants.ATTR_ADVICE_30min_IndSell + " text default '',"
-                    + Constants.ATTR_ADVICE_1Hour_IndSell + " text default '',"
-                    + Constants.ATTR_ADVICE_5Hour_IndSell + " text default '',"
-                    + Constants.ATTR_ADVICE_Day_IndSell + " text default '',"
-                    + Constants.ATTR_ADVICE_Week_IndSell + " text default ''"
-                    + ");");
-            Log.d("Tag", "Created table.");
-        }
+        Log.d("Tag", "Creating table...");
+        db.execSQL("create table " + DEF_TABLE + " ("
+                + "id integer primary key autoincrement,"
+                + Constants.ATTR_GROUP_NAME + " text default '',"
+                + Constants.ATTR_GROUP_ID + " text default '',"
+                + Constants.ATTR_PRICE + " text default '',"
+                + Constants.ATTR_TAB_NUM + " text default '0',"
+                + Constants.ATTR_ADVICE_1min + " text default '',"
+                + Constants.ATTR_ADVICE_5min + " text default '',"
+                + Constants.ATTR_ADVICE_15min + " text default '',"
+                + Constants.ATTR_ADVICE_30min + " text default '',"
+                + Constants.ATTR_ADVICE_1Hour + " text default '',"
+                + Constants.ATTR_ADVICE_5Hour + " text default '',"
+                + Constants.ATTR_ADVICE_Day + " text default '',"
+                + Constants.ATTR_ADVICE_Week + " text default '',"
+                + Constants.ATTR_ADVICE_1min_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_5min_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_15min_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_30min_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_1Hour_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_5Hour_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_Day_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_Week_MABuy + " text default '',"
+                + Constants.ATTR_ADVICE_1min_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_5min_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_15min_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_30min_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_1Hour_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_5Hour_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_Day_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_Week_MASell + " text default '',"
+                + Constants.ATTR_ADVICE_1min_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_5min_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_15min_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_30min_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_1Hour_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_5Hour_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_Day_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_Week_IndBuy + " text default '',"
+                + Constants.ATTR_ADVICE_1min_IndSell + " text default '',"
+                + Constants.ATTR_ADVICE_5min_IndSell + " text default '',"
+                + Constants.ATTR_ADVICE_15min_IndSell + " text default '',"
+                + Constants.ATTR_ADVICE_30min_IndSell + " text default '',"
+                + Constants.ATTR_ADVICE_1Hour_IndSell + " text default '',"
+                + Constants.ATTR_ADVICE_5Hour_IndSell + " text default '',"
+                + Constants.ATTR_ADVICE_Day_IndSell + " text default '',"
+                + Constants.ATTR_ADVICE_Week_IndSell + " text default ''"
+                + ");");
+        Log.d("Tag", "Created table.");
+    }
 
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        }
     }
 }
